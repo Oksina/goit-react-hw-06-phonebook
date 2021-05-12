@@ -1,8 +1,10 @@
 import { createStore, combineReducers } from 'redux';
-import contactReducer from './reducers';
+import contactReducer from './Contacts/reducers/contactsReducer';
+import allContactsReducer from './Contacts/reducers/allContactsReducer';
 
 const rootReducer = combineReducers({
     contact: contactReducer,
+    allcontacts: allContactsReducer,
     //filter: filterReducer,
 });
 // const initialState = {

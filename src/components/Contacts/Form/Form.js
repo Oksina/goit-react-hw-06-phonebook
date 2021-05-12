@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as nameId } from 'uuid';
-
+import { connect } from 'react-redux';
+import addContactAction from '../../../redux/Contacts/actions/contactsAction';
 import s from './Form.module.css';
 nameId();
 
@@ -17,7 +18,8 @@ class Form extends Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSubmit({ id: nameId(), ...this.state });
+        const contact = { id: nameId(), ...this.state };
+        this.props.onSubmit(contact);
         this.reset();
     };
     reset = () => {
@@ -66,4 +68,8 @@ class Form extends Component {
 
 Form.propTypes = { onSubmit: PropTypes.func };
 
-export default Form;
+const mapDispatchToProps = {
+    onSubmit: addContactAction.addContact,
+};
+
+export default connect(null, mapDispatchToProps)(Form);

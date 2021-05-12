@@ -5,8 +5,8 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import 'modern-normalize/modern-normalize.css';
 
-console.log(store);
-console.log(store.getState);
+// console.log(store);
+// console.log(store.getState);
 
 ReactDOM.render(
     <React.StrictMode>
