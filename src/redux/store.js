@@ -1,18 +1,18 @@
 import { createStore, combineReducers } from 'redux';
-import contactReducer from './Contacts/reducers/contactsReducer';
-import allContactsReducer from './Contacts/reducers/allContactsReducer';
+import * as reducers from './Contacts/reducers';
 
-const rootReducer = combineReducers({
-    contact: contactReducer,
-    allcontacts: allContactsReducer,
-    //filter: filterReducer,
-});
 // const initialState = {
 //     contacts: {
 //         items: [],
 //         filter: '',
 //     },
 // };
+
+const rootReducer = combineReducers({
+    items: reducers.contactReducer,
+    //contacts: reducers.allContactsReducer,
+    //filter: filterReducer,
+});
 
 // const reducer = (state = initialState, { type, payload }) => {
 //     switch (type) {
