@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { v4 as nameId } from 'uuid';
 import { connect } from 'react-redux';
-import addContact from '../../../redux/Contacts/actions';
+import contactsActions from '../../../redux/Contacts/allContactsAction';
 import s from './Form.module.css';
-nameId();
 
 class Form extends Component {
     state = {
         name: '',
         number: '',
     };
-
     handleChange = e => {
         const { name, value } = e.currentTarget;
         this.setState({ [name]: value });
     };
     handleSubmit = e => {
         e.preventDefault();
-        const contact = { id: nameId(), ...this.state };
+        const contact = { ...this.state };
         this.props.onSubmit(contact);
         this.reset();
     };
@@ -71,8 +68,8 @@ Form.propTypes = { onSubmit: PropTypes.func };
 // const mapStateToProps = state => {
 //     return { value: state.item };
 // };
-const mapDispatchToProps = items => {
-    return { onSubmit: addContact.addContact(items) };
-};
+const mapDispatchToProps = dispatch => ({
+    onSubmit: e => dispatch(contactsActions.addContact(e)),
+});
 
 export default connect(null, mapDispatchToProps)(Form);
