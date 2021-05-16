@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import contactsActions from '../../../../redux/Contacts/allContactsAction';
 import s from './ListItem.module.css';
 
-const ListItem = ({ contacts, deleteContact }) => {
+const ListItem = ({ contacts, onDeleteContact }) => {
     return contacts.map(({ name, number, id }) => (
         <li key={id} className={s.item}>
             <p className={s.name}>{name}: </p>
             <p>{number} </p>
             <button
                 type="button"
-                onClick={() => deleteContact(id)}
+                onClick={() => onDeleteContact(id)}
                 className={s.button}
             >
                 Delete
@@ -32,23 +32,12 @@ ListItem.propTypes = {
             id: PropTypes.string.isRequired,
         }),
     ).isRequired,
-    deleteContact: PropTypes.func.isRequired,
+    onDeleteContact: PropTypes.func.isRequired,
 };
-
-const getVisibleContacts = (allContacts, filter) => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return allContacts.filter(contact =>
-        contact.name.toLowerCase().includes(normalizedFilter),
-    );
-};
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-    contacts: getVisibleContacts(items, filter),
-});
 
 const mapDispatchToProps = dispatch => ({
-    deleteContact: id => dispatch(contactsActions.deleteContact(id)),
+    onDeleteContact: id => dispatch(contactsActions.deleteContact(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListItem);
+export default connect(null, mapDispatchToProps)(ListItem);
+

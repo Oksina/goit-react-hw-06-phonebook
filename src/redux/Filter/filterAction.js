@@ -1,8 +1,5 @@
-import filterTypes from './filterTypes.js';
+import {createAction} from '@reduxjs/toolkit';
 
-const changeFilter = value => ({
-    type: filterTypes.CHANGE_FILTER,
-    payload: value,
-});
+const changeFilter = createAction('contacts/filter');
 
-export default { changeFilter };
+export default {changeFilter} ;

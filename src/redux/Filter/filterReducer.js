@@ -1,13 +1,8 @@
-import filterTypes from './filterTypes.js';
+import {createReducer} from '@reduxjs/toolkit';
+import actions from './filterAction';
 
-const filterReducer = (state = '', { type, payload }) => {
-    switch (type) {
-        case filterTypes.CHANGE_FILTER:
-            return payload;
-
-        default:
-            return state;
-    }
-};
+const filterReducer = createReducer('', {
+    [actions.changeFilter]: (_, {payload}) => payload
+});
 
 export default filterReducer;

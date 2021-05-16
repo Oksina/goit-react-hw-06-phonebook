@@ -15,13 +15,24 @@ class Form extends Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-        const contact = { ...this.state };
-        this.props.onSubmit(contact);
-        this.reset();
-    };
-    reset = () => {
-        this.setState({ name: '', number: '' });
-    };
+        const { name, number } = this.state;
+        const { contacts, onSubmit } = this.props;
+
+    if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
+      return alert(`${name} is already in contacts`);
+    }
+    if (
+      contacts.find(contact => contact.number.toLowerCase() === number.toLowerCase())
+    ) {
+      return alert(`${number} is already in contacts`);
+    }    
+            onSubmit(this.state);
+            this.reset();
+        };
+        
+        reset = () => {
+            this.setState({ name: '', number: '' });
+        };
 
     render() {
         const { name, number } = this.state;
@@ -65,11 +76,11 @@ class Form extends Component {
 
 Form.propTypes = { onSubmit: PropTypes.func };
 
-// const mapStateToProps = state => {
-//     return { value: state.item };
-// };
+const mapStateToProps = state => ({
+    contacts: state.contacts.items,
+});
 const mapDispatchToProps = dispatch => ({
     onSubmit: e => dispatch(contactsActions.addContact(e)),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

@@ -2,8 +2,8 @@
   "name": "goit-react-hw-03-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Oksina.github.io/goit-react-hw-03-phonebook",
-  "dependencies": {
+   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
@@ -16,6 +16,8 @@
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.0"
   },
@@ -25,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
@@ -48,19 +50,18 @@
   "devDependencies": {
     "husky": "^4.3.8",
     "lint-staged": "^9.5.0",
-    "prettier": "^2.2.1",
-    "redux-devtools-extension": "^2.13.9"
+    "prettier": "^2.2.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Oksina/goit-react-hw-03-phonebook.git"
+    "url": "git+https://github.com/Oksina/goit-react-hw-06-phonebook.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Oksina/goit-react-hw-03-phonebook/issues"
+    "url": "https://github.com/Oksina/goit-react-hw-06-phonebook/issues"
   }
 }
