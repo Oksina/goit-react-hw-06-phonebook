@@ -22,7 +22,6 @@ const Filter = ({ value, onChange }) => {
     );
 };
 
-
 const mapStateToProps = state => ({
     value: state.contacts.filter,
 });

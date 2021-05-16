@@ -18,21 +18,28 @@ class Form extends Component {
         const { name, number } = this.state;
         const { contacts, onSubmit } = this.props;
 
-    if (contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())) {
-      return alert(`${name} is already in contacts`);
-    }
-    if (
-      contacts.find(contact => contact.number.toLowerCase() === number.toLowerCase())
-    ) {
-      return alert(`${number} is already in contacts`);
-    }    
-            onSubmit(this.state);
-            this.reset();
-        };
-        
-        reset = () => {
-            this.setState({ name: '', number: '' });
-        };
+        if (
+            contacts.find(
+                contact => contact.name.toLowerCase() === name.toLowerCase(),
+            )
+        ) {
+            return alert(`${name} is already in contacts`);
+        }
+        if (
+            contacts.find(
+                contact =>
+                    contact.number.toLowerCase() === number.toLowerCase(),
+            )
+        ) {
+            return alert(`${number} is already in contacts`);
+        }
+        onSubmit(this.state);
+        this.reset();
+    };
+
+    reset = () => {
+        this.setState({ name: '', number: '' });
+    };
 
     render() {
         const { name, number } = this.state;

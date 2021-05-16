@@ -3,8 +3,8 @@
     width: 74%;
     margin: auto;
 }
-.message{
+.message {
     display: flex;
     justify-content: center;
-    color:brown;
+    color: brown;
 }
